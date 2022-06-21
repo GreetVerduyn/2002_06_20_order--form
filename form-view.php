@@ -63,7 +63,7 @@
 
         <fieldset>
             <legend>Products</legend>
-            <?php foreach ($products as $i => $product): ?>
+                <?php foreach ($products as $i => $product): ?>
                 <label>
 					<?php // <?= is equal to <?php echo ?>
                     <input type="checkbox" value="<?php echo $i ?>" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -

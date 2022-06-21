@@ -43,19 +43,31 @@ function validate()
 
 function handleForm()
 {
+    global $totalValue;
+    global $products;
     // TODO: form related tasks (step 1)
     $email = $_POST['email'];
-    $street =  $_POST['street'];
-    $streetnumber =  $_POST['streetnumber'];
-    $city =  $_POST['city'];
-    $zipcode =  $_POST['zipcode'];
-    $ordered_products =[];
-    $form_products = $_POST["products"];
-//for ($i=0, ){
-    array_push($ordered_products, $form_products[0]);
+    $street = $_POST['street'];
+    $streetnumber = $_POST['streetnumber'];
+    $city = $_POST['city'];
+    $zipcode = $_POST['zipcode'];
+    $ordered_products = [];
+    //
+    if (isset($_POST["products"])) {
+        $form_products = $_POST["products"];
+        foreach ($form_products as $key => $value) {
+            // do stuff
+
+            array_push($ordered_products, $products[$key]);
+            $totalValue = $totalValue + $products[$key]['price'];
+        }
+    }
     var_dump($ordered_products);
 
-    // Validation (step 2)
+
+
+
+       // Validation (step 2)
     $invalidFields = validate();
     if (!empty($invalidFields)) {
 

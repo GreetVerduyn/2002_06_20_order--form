@@ -52,3 +52,7 @@ Sales are almost there... last thing to do is waiting for customers on a shoppin
 
 # ACTIONS
 1. find some info about
+    - moeilijke oefening: veel info te verwerken in 1 oefening.
+2. to
+3. 
+
