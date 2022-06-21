@@ -35,10 +35,24 @@ $totalValue = 0;
 
 whatIsHappening();
 
+// This function will send a list of invalid fields back
 function validate()
 {
-    // TODO: This function will send a list of invalid fields back
-    return [];
+    $required_fields = [];
+    if (empty($_POST['email'])) {
+        array_push($required_fields, 'e-mail');
+    } if (empty($_POST['street'])) {
+        array_push($required_fields, 'street');
+    }if (empty($_POST['streetnumber'])) {
+        array_push($required_fields, 'street number');
+    }if (empty($_POST['city'])) {
+        array_push($required_fields, 'city');
+    }if (empty($_POST['zipcode'])) {
+        array_push($required_fields, 'zipcode');
+    }
+
+   var_dump($required_fields);
+    return $required_fields;
 }
 
 function handleForm()
@@ -83,7 +97,6 @@ function handleForm()
 $formSubmitted = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $formSubmitted = true;
-
 }
 
 if ($formSubmitted) {
