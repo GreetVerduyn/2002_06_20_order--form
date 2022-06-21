@@ -49,6 +49,8 @@ function validate()
         array_push($required_fields, 'city');
     }if (empty($_POST['zipcode'])) {
         array_push($required_fields, 'zipcode');
+    }if (!ctype_digit($_POST['zipcode'])){
+        array_push($required_fields, 'zipcode NOT CORRECT');
     }
 
    var_dump($required_fields);
