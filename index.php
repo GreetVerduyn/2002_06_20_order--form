@@ -41,7 +41,9 @@ function validate()
     $required_fields = [];
     if (empty($_POST['email'])) {
         array_push($required_fields, 'e-mail');
-    } if (empty($_POST['street'])) {
+    } if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+        array_push($required_fields, 'e-mail NOT CORRECT');
+    }if (empty($_POST['street'])) {
         array_push($required_fields, 'street');
     }if (empty($_POST['streetnumber'])) {
         array_push($required_fields, 'street number');
