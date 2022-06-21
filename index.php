@@ -33,33 +33,37 @@ $products = [
 
 $totalValue = 0;
 
-whatIsHappening();
+//whatIsHappening();
 
 // This function will send a list of invalid fields back
 function validate()
 {
     $required_fields = [];
     if (empty($_POST['email'])) {
-        array_push($required_fields, 'e-mail');
-    } if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-        array_push($required_fields, 'e-mail NOT CORRECT');
-    }if (empty($_POST['street'])) {
-        array_push($required_fields, 'street');
-    }if (empty($_POST['streetnumber'])) {
-        array_push($required_fields, 'street number');
-    }if (empty($_POST['city'])) {
-        array_push($required_fields, 'city');
-    }if (empty($_POST['zipcode'])) {
-        array_push($required_fields, 'zipcode');
-    }if (!ctype_digit($_POST['zipcode'])){
-        array_push($required_fields, 'zipcode NOT CORRECT');
+        array_push($required_fields, 'e-mail is empty');
+    } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+        array_push($required_fields, 'e-mail not valid');
+    }
+    if (empty($_POST['street'])) {
+        array_push($required_fields, 'street is empty');
+    }
+    if (empty($_POST['streetnumber'])) {
+        array_push($required_fields, 'street number is empty');
+    }
+    if (empty($_POST['city'])) {
+        array_push($required_fields, 'city is empty');
+    }
+    if (empty($_POST['zipcode'])) {
+        array_push($required_fields, 'zipcode is empty');
+    }elseif (!ctype_digit($_POST['zipcode'])){
+        array_push($required_fields, 'zipcode not valid, only use numbers');
     }
 
-   var_dump($required_fields);
+  //var_dump($required_fields);
     return $required_fields;
 }
-
-function handleForm()
+$errors=[];
+function handleForm($errors)
 {
     global $totalValue;
     global $products;
@@ -74,20 +78,18 @@ function handleForm()
     if (isset($_POST["products"])) {
         $form_products = $_POST["products"];
         foreach ($form_products as $key => $value) {
-            // do stuff
-
             array_push($ordered_products, $products[$key]);
             $totalValue = $totalValue + $products[$key]['price'];
         }
     }
-    var_dump($ordered_products);
-
-
-
 
        // Validation (step 2)
     $invalidFields = validate();
     if (!empty($invalidFields)) {
+foreach ($invalidFields as $invalidField){
+    array_push($errors, $invalidField);
+ }
+return $errors;
 
         // TODO: handle errors
     } else {
@@ -104,7 +106,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 
 if ($formSubmitted) {
-    handleForm();
+  $errors = handleForm($errors);
+}
+
+function geValue($val) {
+    if (isset($_POST[$val])) {
+        return $_POST[$val];
+    } else {
+        return '';
+    }
 }
 
 require 'form-view.php';
