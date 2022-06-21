@@ -11,9 +11,11 @@ Have a look at the provided structure: you get both an index file and another fi
 Think of a funny / surprising / original name for a store that should definitely exist. (fancy suits for cats? bongo for dates? you name it!)
 Think of some products to sell (feel free to be creative) and update the products array with these.
 Check if all the products & prices are currently visible in the form.
+
 Step 1: accepting orders
 Show an order confirmation when the user submits the form. This should contain the chosen products and delivery address.
 We will learn how to save this information to a database later, so no need to do this now.
+
 Step 2: validation
 Use PHP to check the following:
 Required fields are not empty.
@@ -47,3 +49,6 @@ Statistics
 Show statistics about how much money has been spent. This info should be kept (can you use the session or cookies for this?) when the browser closes.
 Include the most popular product (by this user) and amount of products bought by this user.
 Sales are almost there... last thing to do is waiting for customers on a shopping spree!
+
+# ACTIONS
+1. find some info about
