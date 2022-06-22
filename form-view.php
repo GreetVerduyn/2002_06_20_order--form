@@ -12,14 +12,13 @@
     <title>Your fancy store</title>
 </head>
 <body>
-<div class="container">
+
+<div class="container" style="background-color: floralwhite">
     <?php if (!empty($errors)) {?>
-        <h3>Errors</h3>
+        <h3 style="color: brown">Errors</h3>
     <?php } ?>
    <?php foreach ($errors as $field){
-
-       echo $field;
-       echo "<br/>";
+       echo "<p style='color: brown'> $field</p>";
    }
       ?>
     <h1>Place your order</h1>

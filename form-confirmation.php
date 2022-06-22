@@ -17,9 +17,8 @@
             <div class="card">
                 <div class="invoice p-5">
                     <h5>Your order Confirmed!</h5>
-
                     <span class="font-weight-bold d-block mt-4">Hello</span>
-                    <span>You order has been confirmed and will be delivered</span>
+                    <span>Pleas check your order. Confirm it by clicking OK</span>
                     <div class="payment border-top mt-3 mb-3 border-bottom table-responsive">
                         <table class="table table-borderless">
                             <tbody>
@@ -33,17 +32,15 @@
                                 </td>
                             </tr>
                             </tbody>
-
                         </table>
                     </div>
                     <div class="product border-bottom table-responsive">
                         <table class="table table-borderless">
                             <tbody>
-                            <?php foreach ($ordered_products as $i => $product): ?>
-
+                            <?php foreach ( $_SESSION["ordered_products"] as $i => $product): ?>
                             <tr>
                                 <td width="20%">
-                                    <img src="https://i.imgur.com/u11K1qd.jpg" width="90">
+                                    <img src="<?php echo $product['image'] ?>"  width="90">
                                 </td>
                                 <td width="60%">
                                     <span class="font-weight-bold"><?php echo "€ ".$product['name']?></span>
@@ -55,9 +52,7 @@
                                 </td>
                             </tr>
                             <?php endforeach; ?>
-
                             </tbody>
-
                         </table>
                     </div>
                     <div class="row d-flex justify-content-end">
@@ -109,9 +104,9 @@
                     <span></span>
                 </div>
                 <div class="d-flex justify-content-between footer p-3">
-                    <span><a href="index.php">Oops I forgot something </a></span>
+                    <span><a href="index.php">Oops!!! I changed my mind </a></span>
+                    <button>OK</button>
                 </div>
-
             </div>
         </div>
     </div>

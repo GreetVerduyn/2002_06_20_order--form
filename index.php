@@ -22,14 +22,16 @@ function whatIsHappening() {
 }
 
 // TODO: provide some products (you may overwrite the example)
+
 $products = [
-    ['name' => 'aardbeismoothie', 'price' => 4.5],
-    ['name' => 'bananenbrood', 'price' => 4.5],
-    ['name' => 'worteltaart', 'price' => 5.0],
-    ['name' => 'pompoenmuffins', 'price' => 3.5],
-    ['name' => 'thee', 'price' => 2.5],
-    ['name' => 'chai', 'price' => 2.5],
+    ['name' => 'strawberry smoothie', 'price' => 4.5, 'image' => './images/aardbeismoothie.jpg'],
+    ['name' => 'bananabread', 'price' => 4.5, 'image' => './images/bananenbrood.jpg'],
+    ['name' => 'carrotcake', 'price' => 5.0, 'image' => './images/carrot-cake.jpg'],
+    ['name' => 'pumpkinmuffin', 'price' => 3.5, 'image' => './images/pompoenmuffin.jpg'],
+    ['name' => 'thee', 'price' => 2.5, 'image' => './images/thee.jpg'],
+    ['name' => 'chai tea latte', 'price' => 2.5, 'image' => './images/chai-latte.jpg'],
 ];
+
 
 $totalValue = 0;
 
@@ -57,9 +59,11 @@ function validate()
         array_push($required_fields, 'zipcode is empty');
     }elseif (!ctype_digit($_SESSION['zipcode'])){
         array_push($required_fields, 'zipcode not valid, only use numbers');
+    } if (empty($_SESSION['ordered_products'])) {
+    array_push($required_fields, 'you forgot to choose');
     }
-
   //var_dump($required_fields);
+
     return $required_fields;
 }
 $errors=[];
@@ -73,12 +77,12 @@ function handleForm($errors)
     $_SESSION["streetnumber"] = $_POST['streetnumber'];
     $_SESSION["city"] = $_POST['city'];
     $_SESSION["zipcode"] = $_POST['zipcode'];
-    $ordered_products = [];
-    //
+    $_SESSION["ordered_products"] = [];
+
     if (isset($_POST["products"])) {
         $form_products = $_POST["products"];
         foreach ($form_products as $key => $value) {
-            array_push($ordered_products, $products[$key]);
+            array_push( $_SESSION["ordered_products"], $products[$key]);
             $totalValue = $totalValue + $products[$key]['price'];
         }
     }
@@ -109,12 +113,12 @@ if ($formSubmitted) {
   $errors = handleForm($errors);
 }
 
-function geValue($val) {
+/*function geValue($val) {
     if (isset($_POST[$val])) {
         return $_POST[$val];
     } else {
         return '';
     }
-}
+}*/
 
 require 'form-view.php';
