@@ -40,7 +40,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label>
-                <input type="text" id="email" value="<?php echo geValue('email') ?>" name="email" class="form-control"/>
+                <input type="text" id="email" value="<?php echo  $_SESSION["email"] ?>" name="email" class="form-control"/>
             </div>
             <div></div>
         </div>
@@ -51,21 +51,21 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
-                    <input type="text" name="street" value="<?php echo geValue('street') ?>" id="street" class="form-control">
+                    <input type="text" name="street" value="<?php echo $_SESSION["street"] ?>" id="street" class="form-control">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
-                    <input type="text" id="streetnumber" value="<?php echo geValue('streetnumber') ?>" name="streetnumber" class="form-control">
+                    <input type="text" id="streetnumber" value="<?php echo $_SESSION["streetnumber"]?>" name="streetnumber" class="form-control">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
-                    <input type="text" id="city" name="city" value="<?php echo geValue('city') ?>" class="form-control">
+                    <input type="text" id="city" name="city" value="<?php echo $_SESSION["city"]?> " class="form-control">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
-                    <input type="text" id="zipcode" name="zipcode" value="<?php echo geValue('zipcode') ?>" class="form-control">
+                    <input type="text" id="zipcode" name="zipcode" value="<?php echo $_SESSION["zipcode"] ?>" class="form-control">
                 </div>
             </div>
         </fieldset>

@@ -27,8 +27,8 @@
                                 <td>
                                     <div class="py-2">
                                         <span class="d-block text-muted">delivery address</span>
-                                        <span class="d-block"><?php echo $street." ".$streetnumber?></span>
-                                        <span class="d-block"><?php echo $city." ".$zipcode?></span>
+                                        <span class="d-block"><?php echo  $_SESSION["street"]." ". $_SESSION["streetnumber"]?></span>
+                                        <span class="d-block"><?php echo  $_SESSION["zipcode"]." ". $_SESSION["city"]?></span>
                                     </div>
                                 </td>
                             </tr>
@@ -106,11 +106,10 @@
                     </div>
                     <p>We will be sending shipping confirmation email when the item shipped successfully!</p>
                     <p class="font-weight-bold mb-0">Thanks for shopping with us!</p>
-                    <span>Nike Team</span>
+                    <span></span>
                 </div>
                 <div class="d-flex justify-content-between footer p-3">
-                    <span><a href="index.php">back</a></span>
-                    <span>12 June, 2020</span>
+                    <span><a href="index.php">Oops I forgot something </a></span>
                 </div>
 
             </div>

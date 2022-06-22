@@ -39,23 +39,23 @@ $totalValue = 0;
 function validate()
 {
     $required_fields = [];
-    if (empty($_POST['email'])) {
+    if (empty($_SESSION["email"])) {
         array_push($required_fields, 'e-mail is empty');
-    } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+    } elseif (!filter_var($_SESSION["email"], FILTER_VALIDATE_EMAIL)){
         array_push($required_fields, 'e-mail not valid');
     }
-    if (empty($_POST['street'])) {
+    if (empty( $_SESSION["street"])) {
         array_push($required_fields, 'street is empty');
     }
-    if (empty($_POST['streetnumber'])) {
+    if (empty($_SESSION['streetnumber'])) {
         array_push($required_fields, 'street number is empty');
     }
-    if (empty($_POST['city'])) {
+    if (empty($_SESSION['city'])) {
         array_push($required_fields, 'city is empty');
     }
-    if (empty($_POST['zipcode'])) {
+    if (empty($_SESSION['zipcode'])) {
         array_push($required_fields, 'zipcode is empty');
-    }elseif (!ctype_digit($_POST['zipcode'])){
+    }elseif (!ctype_digit($_SESSION['zipcode'])){
         array_push($required_fields, 'zipcode not valid, only use numbers');
     }
 
@@ -68,11 +68,11 @@ function handleForm($errors)
     global $totalValue;
     global $products;
     // TODO: form related tasks (step 1)
-    $email = $_POST['email'];
-    $street = $_POST['street'];
-    $streetnumber = $_POST['streetnumber'];
-    $city = $_POST['city'];
-    $zipcode = $_POST['zipcode'];
+    $_SESSION["email"]= $_POST['email'];
+    $_SESSION["street"] = $_POST['street'];
+    $_SESSION["streetnumber"] = $_POST['streetnumber'];
+    $_SESSION["city"] = $_POST['city'];
+    $_SESSION["zipcode"] = $_POST['zipcode'];
     $ordered_products = [];
     //
     if (isset($_POST["products"])) {
