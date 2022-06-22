@@ -14,13 +14,13 @@
 <body>
 
 <div class="container" style="background-color: floralwhite">
-    <?php if (!empty($errors)) {?>
+ <!--   <?php //if (!empty($errors)) { var_dump($errors);?>
         <h3 style="color: brown">Errors</h3>
-    <?php } ?>
-   <?php foreach ($errors as $field){
-       echo "<p style='color: brown'> $field</p>";
-   }
-      ?>
+    <?php// } ?>
+   <?php //foreach ($errors as $field){
+       //echo "<p style='color: brown'> $field</p>";
+   //}
+      ?>-->
     <h1>Place your order</h1>
     <?php // Navigation for when you need it ?>
     <?php /*
@@ -39,6 +39,9 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label>
+                <?php if (empty($_SESSION["email"])) {?>
+                    <span><div class="alert alert-warning" role="alert">e-mail must be entered</div></span>
+                <?php } ?>
                 <input type="text" id="email" value="<?php echo  $_SESSION["email"] ?>" name="email" class="form-control"/>
             </div>
             <div></div>
@@ -50,20 +53,32 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
+                    <?php if (empty($_SESSION["street"])) {?>
+                        <span><div class="alert alert-warning" role="alert">street must be entered</div></span>
+                    <?php } ?>
                     <input type="text" name="street" value="<?php echo $_SESSION["street"] ?>" id="street" class="form-control">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
+                    <?php if (empty($_SESSION["streetnumber"])) {?>
+                        <span><div class="alert alert-warning" role="alert">streetnumber must be entered</div></span>
+                    <?php } ?>
                     <input type="text" id="streetnumber" value="<?php echo $_SESSION["streetnumber"]?>" name="streetnumber" class="form-control">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
+                    <?php if (empty($_SESSION["city"])) {?>
+                        <span><div class="alert alert-warning" role="alert">city must be entered</div></span>
+                    <?php } ?>
                     <input type="text" id="city" name="city" value="<?php echo $_SESSION["city"]?> " class="form-control">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
+                    <?php if (empty($_SESSION["zipcode"])) {?>
+                        <span><div class="alert alert-warning" role="alert">zipcode must be entered</div></span>
+                    <?php } ?>
                     <input type="text" id="zipcode" name="zipcode" value="<?php echo $_SESSION["zipcode"] ?>" class="form-control">
                 </div>
             </div>
